@@ -1,0 +1,18 @@
+---
+- hosts: 192.168.1.24
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start MySQL Docker container
+      become: true
+      docker_container:
+        name: mysql_container
+        image: mysql
+        restart_policy: always
+        env:
+          MYSQL_ROOT_PASSWORD_FILE: /root/mysql_password.txt
+        ports:
+          - "3306:3306"
