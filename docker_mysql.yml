@@ -13,6 +13,6 @@
         image: mysql
         restart_policy: always
         env:
-          MYSQL_ROOT_PASSWORD_FILE: /root/mysql_password.txt
+          MYSQL_ROOT_PASSWORD_FILE: /root/mysql_credentials.yml
         ports:
           - "3306:3306"
